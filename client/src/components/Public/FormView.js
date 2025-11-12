@@ -14,7 +14,7 @@ function FormView() {
   const [submitting, setSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const fetchForm = async () => { // Moved fetchForm outside useEffect
+const fetchForm = useCallback(async () => {
     try {
       setLoading(true);
       const { data } = await publicAPI.getForm(id);
@@ -29,11 +29,11 @@ function FormView() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
-    fetchForm(); // Call the function directly
-  }, [id]);
+    fetchForm();
+  }, [fetchForm]);
 
   const handleCheckboxChange = (fieldName, value, checked) => {
     setAnswers((prev) => {
