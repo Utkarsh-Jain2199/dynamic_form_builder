@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { adminAPI } from '../../services/api';
 import FieldPropertiesPanel from './FormBuilder/FieldPropertiesPanel';
 import PreviewForm from './FormBuilder/PreviewForm';
@@ -18,6 +18,7 @@ function FormBuilder({ form, token, onBack, onFormUpdate, onFormSaved }) {
   const [draggedElement, setDraggedElement] = useState(null);
   const [isEditingFormInfo, setIsEditingFormInfo] = useState(false);
   const [formInfo, setFormInfo] = useState({ title: '', description: '' });
+  const dropHandled = useRef(false);
 
   useEffect(() => {
     if (form) {
@@ -36,6 +37,7 @@ function FormBuilder({ form, token, onBack, onFormUpdate, onFormSaved }) {
 
   const handleDragStart = (e, element) => {
     setDraggedElement(element);
+    dropHandled.current = false; // allow next drop
     e.dataTransfer.effectAllowed = 'move';
   };
 
@@ -47,6 +49,8 @@ function FormBuilder({ form, token, onBack, onFormUpdate, onFormSaved }) {
   const handleDrop = async (e, dropIndex) => {
     e.preventDefault();
     if (!draggedElement) return;
+    if (dropHandled.current) return;
+    dropHandled.current = true;
 
     const newField = {
       label: draggedElement.label,
@@ -455,4 +459,3 @@ function FormBuilder({ form, token, onBack, onFormUpdate, onFormSaved }) {
 
 
 export default FormBuilder;
-
