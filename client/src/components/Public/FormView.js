@@ -14,18 +14,16 @@ function FormView() {
   const [submitting, setSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  useEffect(() => {
-    fetchForm();
-  }, [id]);
-
-  const fetchForm = async () => {
+  const fetchForm = async () => { // Moved fetchForm outside useEffect
     try {
       setLoading(true);
       const { data } = await publicAPI.getForm(id);
       setForm(data);
-      setAnswers(Object.fromEntries(
-        data.fields.filter(f => f.type === 'checkbox').map(f => [f.name, []])
-      ));
+      setAnswers(
+        Object.fromEntries(
+          data.fields.filter((f) => f.type === 'checkbox').map((f) => [f.name, []])
+        )
+      );
     } catch (err) {
       console.error(err);
     } finally {
@@ -33,20 +31,17 @@ function FormView() {
     }
   };
 
-  const handleChange = (fieldName, value) => {
-    setAnswers(prev => ({ ...prev, [fieldName]: value }));
-    if (errors[fieldName]) {
-      setErrors(prev => {
-        const { [fieldName]: _, ...rest } = prev;
-        return rest;
-      });
-    }
-  };
+  useEffect(() => {
+    fetchForm(); // Call the function directly
+  }, [id]);
 
   const handleCheckboxChange = (fieldName, value, checked) => {
-    setAnswers(prev => {
+    setAnswers((prev) => {
       const current = prev[fieldName] || [];
-      return { ...prev, [fieldName]: checked ? [...current, value] : current.filter(v => v !== value) };
+      return {
+        ...prev,
+        [fieldName]: checked ? [...current, value] : current.filter((v) => v !== value)
+      };
     });
   };
 
@@ -56,7 +51,7 @@ function FormView() {
     setSubmitting(true);
 
     try {
-      const response = await publicAPI.submitForm({
+      await publicAPI.submitForm({
         formId: id,
         answers
       });
@@ -68,13 +63,14 @@ function FormView() {
       if (err.response?.data?.errors) {
         setErrors(err.response.data.errors);
       } else {
-        setErrors({ submit: err.response?.data?.error || 'Failed to submit form' });
+        setErrors({
+          submit: err.response?.data?.error || 'Failed to submit form'
+        });
       }
     } finally {
       setSubmitting(false);
     }
   };
-
 
   if (loading) {
     return <div className="container"><div className="loading">Loading form...</div></div>;
@@ -110,11 +106,13 @@ function FormView() {
       <div className="form-container">
         <h1>{form.title}</h1>
         {form.description && <p className="form-description">{form.description}</p>}
-        
+
         {errors.submit && <div className="error">{errors.submit}</div>}
 
         <form onSubmit={handleSubmit}>
-          {form.fields.map(field => renderField(field, answers, errors, setAnswers, setErrors, handleCheckboxChange))}
+          {form.fields.map((field) =>
+            renderField(field, answers, errors, setAnswers, setErrors, handleCheckboxChange)
+          )}
           <div className="form-actions">
             <button type="submit" className="button button-primary" disabled={submitting}>
               {submitting ? 'Submitting...' : 'Submit'}
@@ -127,4 +125,3 @@ function FormView() {
 }
 
 export default FormView;
-
