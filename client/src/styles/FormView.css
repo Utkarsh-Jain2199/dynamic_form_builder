@@ -1,0 +1,85 @@
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  border: 1px solid #ddd;
+}
+
+.form-container h1 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.form-description {
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.required {
+  color: #dc3545;
+  margin-left: 4px;
+}
+
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-label,
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.radio-label input[type="radio"],
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.success-message {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.success-message h2 {
+  color: #28a745;
+  margin-bottom: 10px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #666;
+}
+
+.nested-field {
+  margin-left: 20px;
+  padding-left: 15px;
+  border-left: 2px solid #007bff;
+}
+
+.file-preview {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+

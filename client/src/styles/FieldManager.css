@@ -1,0 +1,147 @@
+.field-manager {
+  width: 100%;
+}
+
+.field-manager-header {
+  margin-bottom: 20px;
+}
+
+.field-manager-header h2 {
+  margin-top: 10px;
+}
+
+.option-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.option-row .input {
+  flex: 1;
+}
+
+.fields-list {
+  margin-top: 20px;
+}
+
+.field-item {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: move;
+  transition: background-color 0.2s;
+}
+
+.field-item:hover {
+  background-color: #f8f9fa;
+}
+
+.field-item.dragging {
+  opacity: 0.5;
+}
+
+.field-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.drag-handle {
+  cursor: grab;
+  color: #666;
+  font-size: 18px;
+  user-select: none;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.field-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.field-type {
+  background-color: #e9ecef;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #666;
+}
+
+.required-badge {
+  background-color: #dc3545;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.options-count {
+  background-color: #007bff;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.field-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+}
+
+.option-container {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+}
+
+.nested-fields-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.nested-fields-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.nested-field-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
+
+.nested-field-row .input {
+  flex: 1;
+}
+
+

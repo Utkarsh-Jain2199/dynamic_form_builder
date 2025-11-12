@@ -1,0 +1,83 @@
+.builder-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: white;
+  border-bottom: 1px solid #e1e8ed;
+  gap: 20px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.builder-header h2 {
+  margin: 0;
+  flex: 1;
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+.back-button {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+}
+
+.back-button:hover {
+  background: #f8f9fa;
+}
+
+.mode-toggle {
+  display: flex;
+  background: #f1f3f5;
+  border-radius: 8px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.mode-toggle button {
+  padding: 8px 20px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6c757d;
+}
+
+.mode-toggle .toggle-active {
+  background: white;
+  color: #007bff;
+}
+
+.save-form-button {
+  padding: 10px 24px;
+  border: none;
+  background: #28a745;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.save-form-button:hover:not(:disabled) {
+  background: #218838;
+}
+
+.save-form-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+

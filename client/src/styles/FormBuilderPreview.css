@@ -1,0 +1,81 @@
+.preview-mode {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  background: #f8f9fa;
+}
+
+.preview-form {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.preview-form h1 {
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  color: #2c3e50;
+}
+
+.preview-description {
+  margin: 0 0 30px 0;
+  color: #6c757d;
+  font-size: 16px;
+}
+
+.preview-field {
+  margin-bottom: 25px;
+}
+
+.preview-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.preview-nested-field {
+  margin-left: 20px;
+  margin-top: 10px;
+  padding-left: 15px;
+  border-left: 2px solid #007bff;
+}
+
+.preview-nested-label {
+  font-size: 14px;
+}
+
+.preview-input,
+.preview-textarea,
+.preview-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e1e8ed;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.preview-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.preview-checkbox-group,
+.preview-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.preview-checkbox,
+.preview-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+

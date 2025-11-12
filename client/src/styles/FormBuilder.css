@@ -1,0 +1,134 @@
+.form-builder-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f7fa;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.form-info-display {
+  width: 100%;
+}
+.builder-content {
+  display: flex;
+}
+
+.form-title-display {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-form-info-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.6;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.edit-form-info-btn:hover {
+  opacity: 1;
+  background: #f0f0f0;
+}
+
+.form-description-placeholder {
+  margin: 10px 0 0 0;
+  color: #999;
+  font-size: 14px;
+  font-style: italic;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.form-description-placeholder:hover {
+  background: #f8f9fa;
+  color: #666;
+}
+
+.form-info-editor {
+  width: 100%;
+}
+
+.form-title-input-edit {
+  width: 100%;
+  font-size: 24px;
+  font-weight: 600;
+  border: 2px solid #007bff;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.form-description-input-edit {
+  width: 100%;
+  min-height: 80px;
+  border: 2px solid #007bff;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.form-info-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.save-form-info-btn,
+.cancel-form-info-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.save-form-info-btn {
+  background: #007bff;
+  color: white;
+}
+
+.save-form-info-btn:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.save-form-info-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.cancel-form-info-btn {
+  background: #f8f9fa;
+  color: #6c757d;
+  border: 1px solid #e1e8ed;
+}
+
+.cancel-form-info-btn:hover {
+  background: #e9ecef;
+}
+
+.form-description {
+  margin: 10px 0 0 0;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+
+

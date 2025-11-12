@@ -1,0 +1,115 @@
+.builder-canvas {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  background: #f8f9fa;
+}
+
+.canvas-header {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.empty-canvas {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6c757d;
+  font-size: 16px;
+  border: 2px dashed #e1e8ed;
+  border-radius: 8px;
+  background: white;
+  margin-top: 20px;
+}
+
+.field-box {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: white;
+  border: 2px dashed #e1e8ed;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.field-box:hover {
+  border-color: #007bff;
+}
+
+.field-box.selected {
+  border-color: #007bff;
+  border-style: solid;
+}
+
+.drop-zone {
+  height: 20px;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+
+.drop-zone:hover {
+  background-color: #e7f3ff;
+  border: 2px dashed #007bff;
+}
+
+.field-handle {
+  position: absolute;
+  left: 8px;
+  top: 20px;
+  cursor: grab;
+  color: #6c757d;
+  font-size: 18px;
+  padding: 4px;
+}
+
+.field-handle:active {
+  cursor: grabbing;
+}
+
+.field-content {
+  margin-left: 30px;
+  margin-right: 40px;
+}
+
+.field-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.required-star {
+  color: #dc3545;
+}
+
+.field-type-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.field-delete {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  opacity: 0.5;
+}
+
+.field-box:hover .field-delete {
+  opacity: 1;
+}
+

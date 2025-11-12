@@ -1,0 +1,63 @@
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  border: 1px solid #ddd;
+}
+
+.login-container h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.help-text {
+  display: block;
+  margin-top: 5px;
+  color: #666;
+  font-size: 12px;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.container.has-builder {
+  padding: 0;
+  max-width: 100%;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s;
+}
+
+.tab:hover {
+  color: #333;
+}
+
+.tab.active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+  font-weight: 600;
+}
+
+
