@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { adminAPI } from '../../services/api';
 import FormBuilder from './FormBuilder';
 import '../../styles/FormManager.css';
@@ -7,21 +7,22 @@ function FormManager({ token, onSelectForm, selectedForm }) {
   const [forms, setForms] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchForms = async () => {
-      try {
-        setLoading(true);
-        const { data } = await adminAPI.getForms(token);
-        setForms(data);
-      } catch (err) {
-        console.error(err);
-        alert('Failed to load forms');
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchForms();
+  const fetchForms = useCallback(async () => {
+    try {
+      setLoading(true);
+      const { data } = await adminAPI.getForms(token);
+      setForms(data);
+    } catch (err) {
+      console.error(err);
+      alert('Failed to load forms');
+    } finally {
+      setLoading(false);
+    }
   }, [token]);
+
+  useEffect(() => {
+    fetchForms();
+  }, [fetchForms]);
 
 
   const handleDelete = async (id) => {
