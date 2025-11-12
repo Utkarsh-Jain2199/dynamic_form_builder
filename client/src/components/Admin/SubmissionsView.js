@@ -17,53 +17,49 @@ function SubmissionsView({ token, selectedForm }) {
   });
 
   useEffect(() => {
+    const fetchForms = async () => {
+      try {
+        const response = await adminAPI.getForms(token);
+        setForms(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
     fetchForms();
-  }, []);
+  }, [token]);
 
   useEffect(() => {
+    const fetchSubmissions = async () => {
+      try {
+        setLoading(true);
+        let response;
+        const params = {
+          page,
+          limit,
+          ...(filters.startDate && { startDate: filters.startDate }),
+          ...(filters.endDate && { endDate: filters.endDate })
+        };
+        if (selectedFormId === 'all') {
+          response = await adminAPI.getSubmissions(token, params);
+        } else {
+          response = await adminAPI.getFormSubmissions(selectedFormId, token, params);
+        }
+        if (response.data.submissions) {
+          setSubmissions(response.data.submissions);
+          setPagination(response.data.pagination);
+        } else {
+          setSubmissions(response.data);
+          setPagination({ page: 1, limit: 10, total: response.data.length, pages: 1 });
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Failed to load submissions');
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchSubmissions();
-  }, [selectedFormId, page, filters]);
-
-  const fetchForms = async () => {
-    try {
-      const response = await adminAPI.getForms(token);
-      setForms(response.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const fetchSubmissions = async () => {
-    try {
-      setLoading(true);
-      let response;
-      const params = {
-        page,
-        limit,
-        ...(filters.startDate && { startDate: filters.startDate }),
-        ...(filters.endDate && { endDate: filters.endDate })
-      };
-      
-      if (selectedFormId === 'all') {
-        response = await adminAPI.getSubmissions(token, params);
-      } else {
-        response = await adminAPI.getFormSubmissions(selectedFormId, token, params);
-      }
-      
-      if (response.data.submissions) {
-        setSubmissions(response.data.submissions);
-        setPagination(response.data.pagination);
-      } else {
-        setSubmissions(response.data);
-        setPagination({ page: 1, limit: 10, total: response.data.length, pages: 1 });
-      }
-    } catch (err) {
-      console.error(err);
-      alert('Failed to load submissions');
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [selectedFormId, page, filters, token]);
 
   const handleFilterChange = (key, value) => {
     setFilters(prev => ({ ...prev, [key]: value }));
@@ -72,17 +68,6 @@ function SubmissionsView({ token, selectedForm }) {
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleString();
-  };
-
-  const formatAnswers = (answers) => {
-    if (!answers) return 'No answers';
-    const answersObj = answers instanceof Map ? Object.fromEntries(answers) : answers;
-    return Object.entries(answersObj).map(([key, value]) => {
-      if (Array.isArray(value)) {
-        return `${key}: ${value.join(', ')}`;
-      }
-      return `${key}: ${value}`;
-    }).join('; ');
   };
 
   if (loading) {

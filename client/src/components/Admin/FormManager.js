@@ -8,21 +8,20 @@ function FormManager({ token, onSelectForm, selectedForm }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const fetchForms = async () => {
+      try {
+        setLoading(true);
+        const { data } = await adminAPI.getForms(token);
+        setForms(data);
+      } catch (err) {
+        console.error(err);
+        alert('Failed to load forms');
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchForms();
-  }, []);
-
-  const fetchForms = async () => {
-    try {
-      setLoading(true);
-      const response = await adminAPI.getForms(token);
-      setForms(response.data);
-    } catch (err) {
-      console.error(err);
-      alert('Failed to load forms');
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [token]);
 
 
   const handleDelete = async (id) => {

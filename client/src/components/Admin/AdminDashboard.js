@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import FormManager from './FormManager';
-import FieldManager from './FieldManager';
 import SubmissionsView from './SubmissionsView';
 import '../../styles/AdminDashboard.css';
 import { adminAPI } from '../../services/api';
