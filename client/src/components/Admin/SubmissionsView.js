@@ -49,7 +49,7 @@ function SubmissionsView({ token, selectedForm }) {
           setPagination(response.data.pagination);
         } else {
           setSubmissions(response.data);
-          setPagination({ page: 1, limit: 10, total: response.data.length, pages: 1 });
+          setPagination({ page: 1, limit, total: response.data.length, pages: 1 });
         }
       } catch (err) {
         console.error(err);
@@ -59,11 +59,11 @@ function SubmissionsView({ token, selectedForm }) {
       }
     };
     fetchSubmissions();
-  }, [selectedFormId, page, filters, token]);
+  }, [selectedFormId, page, filters, token, limit]);
 
   const handleFilterChange = (key, value) => {
     setFilters(prev => ({ ...prev, [key]: value }));
-    setPage(1); // Reset to first page when filter changes
+    setPage(1);
   };
 
   const formatDate = (dateString) => {
@@ -229,4 +229,3 @@ function SubmissionsView({ token, selectedForm }) {
 }
 
 export default SubmissionsView;
-
